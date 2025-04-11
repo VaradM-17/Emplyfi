@@ -12,16 +12,16 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class DepartmentServiceImpl implements DepartmentService{
-	
-	private DepartmentRepository departmentrepository;
+public class DepartmentServiceImpl implements DepartmentService {
+
+	private DepartmentRepository departmentRepository;
 
 	// create
 	@Override
-	public DepartmentDto createDepartment(DepartmentDto departmentdto) {
-		Department department = DepartmentMapper.mapToDepartment(departmentdto);
-		Department savedDepartment = departmentrepository.save(department);
+	public DepartmentDto createDepartment(DepartmentDto departmentDto) {
+		Department department = DepartmentMapper.mapToDepartment(departmentDto);
+		Department savedDepartment = departmentRepository.save(department);
 		return DepartmentMapper.mapToDepartmentDto(savedDepartment);
 	}
-	
+
 }

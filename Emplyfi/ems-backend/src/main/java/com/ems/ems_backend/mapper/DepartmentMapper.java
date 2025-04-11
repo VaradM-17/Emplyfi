@@ -12,8 +12,8 @@ public class DepartmentMapper {
 	}
 
 	// convert departmentdto to department entity
-	public static Department mapToDepartment(DepartmentDto departmentdto) {
-		return new Department(departmentdto.getId(), departmentdto.getDepartmentName(),
-				departmentdto.getDepartmentDescription());
+	public static Department mapToDepartment(DepartmentDto departmentDto) {
+		return new Department(departmentDto.getId(), departmentDto.getDepartmentName(),
+				departmentDto.getDepartmentDescription());
 	}
 }
