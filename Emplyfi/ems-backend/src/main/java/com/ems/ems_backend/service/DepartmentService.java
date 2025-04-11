@@ -5,5 +5,8 @@ import com.ems.ems_backend.dto.DepartmentDto;
 public interface DepartmentService{
 	
 	// create 
-	public DepartmentDto createDepartment(DepartmentDto departmentdto) ;
+	public DepartmentDto createDepartment(DepartmentDto departmentDto) ;
+	
+	//update
+	public DepartmentDto updateDepartment(Long id,DepartmentDto updateDepartment);
 }
