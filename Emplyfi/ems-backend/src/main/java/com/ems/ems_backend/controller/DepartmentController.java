@@ -1,9 +1,12 @@
 package com.ems.ems_backend.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -48,6 +51,12 @@ public class DepartmentController {
 		departmentServiceImpl.deleteDepartment(departmentId);
 		return ResponseEntity.ok("Department successfully deleted");
 	}
-	
+
+	// Get All
+	@GetMapping("/getAll")
+	public ResponseEntity<List<DepartmentDto>> getAllDepartment() {
+		List<DepartmentDto> departments = departmentServiceImpl.getAllDepartment();
+		return ResponseEntity.ok(departments);
+	}
 
 }
