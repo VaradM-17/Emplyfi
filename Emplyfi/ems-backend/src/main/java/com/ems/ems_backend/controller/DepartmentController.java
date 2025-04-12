@@ -25,6 +25,7 @@ public class DepartmentController {
 
 	private DepartmentServiceImpl departmentServiceImpl;
 
+	// Create
 	@PostMapping("/create")
 	public ResponseEntity<DepartmentDto> createDepartment(@RequestBody DepartmentDto departmentDto) {
 		DepartmentDto savedDepartment = departmentServiceImpl.createDepartment(departmentDto);
@@ -32,6 +33,7 @@ public class DepartmentController {
 		return new ResponseEntity<>(savedDepartment, HttpStatus.CREATED);
 	}
 
+	// Update
 	@PutMapping("/updateDepartment/{id}")
 	public ResponseEntity<DepartmentDto> updateDepartment(@PathVariable("id") Long departmentId,
 			@RequestBody DepartmentDto departmentDto) {
@@ -40,9 +42,12 @@ public class DepartmentController {
 		return ResponseEntity.ok(updateDepartment);
 	}
 
+	// Delete
 	@DeleteMapping("/deleteDepartment/{id}")
 	public ResponseEntity<String> deleteDepartment(@PathVariable("id") Long departmentId) {
 		departmentServiceImpl.deleteDepartment(departmentId);
 		return ResponseEntity.ok("Department successfully deleted");
 	}
+	
+
 }

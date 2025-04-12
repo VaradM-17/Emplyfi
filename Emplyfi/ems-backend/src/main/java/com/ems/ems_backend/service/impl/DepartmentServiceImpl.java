@@ -50,5 +50,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 		departmentRepository.deleteById(id);
 	}
 
-	
+	// Get All
+	@Override
+	public List<DepartmentDto> getAllDepartment() {
+		List<Department> departments = departmentRepository.findAll();
+		return departments.stream().map((department) -> DepartmentMapper.mapToDepartmentDto(department))
+				.collect(Collectors.toList());
+	}
+
 }
