@@ -43,11 +43,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	// Delete
 	@Override
-	public void deleteDepartment(Long id) {
-		Department department = departmentRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Department not found by Id : " + id));
+	public void deleteDepartment(Long departmentId) {
+		Department department = departmentRepository.findById(departmentId)
+				.orElseThrow(() -> new ResourceNotFoundException("Department not found by Id : " + departmentId));
 
-		departmentRepository.deleteById(id);
+		departmentRepository.deleteById(departmentId);
 	}
 
 	// Get All
@@ -56,6 +56,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 		List<Department> departments = departmentRepository.findAll();
 		return departments.stream().map((department) -> DepartmentMapper.mapToDepartmentDto(department))
 				.collect(Collectors.toList());
+	}
+
+	// Get Department
+	@Override
+	public DepartmentDto getDepartmentById(Long departmentId) {
+		Department department = departmentRepository.findById(departmentId)
+				.orElseThrow(() -> new ResourceNotFoundException("Department not found by Id : " + departmentId));
+		return DepartmentMapper.mapToDepartmentDto(department);
 	}
 
 }

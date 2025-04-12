@@ -10,11 +10,14 @@ public interface DepartmentService {
 	public DepartmentDto createDepartment(DepartmentDto departmentDto);
 
 	// update
-	public DepartmentDto updateDepartment(Long id, DepartmentDto updateDepartment);
+	public DepartmentDto updateDepartment(Long departmentId, DepartmentDto updateDepartment);
 
 	// delete
-	public void deleteDepartment(Long id);
+	public void deleteDepartment(Long departmentId);
 	
 	// get all
 	public List<DepartmentDto> getAllDepartment();
+	
+	// get single department
+	public DepartmentDto getDepartmentById(Long departmentId);
 }
