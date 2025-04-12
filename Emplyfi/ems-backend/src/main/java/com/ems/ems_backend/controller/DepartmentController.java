@@ -53,10 +53,16 @@ public class DepartmentController {
 	}
 
 	// Get All
-	@GetMapping("/getAll")
+	@GetMapping("/getAllDepartment")
 	public ResponseEntity<List<DepartmentDto>> getAllDepartment() {
 		List<DepartmentDto> departments = departmentServiceImpl.getAllDepartment();
 		return ResponseEntity.ok(departments);
 	}
 
+	// Get Department
+	@GetMapping("/getDepartmentById/{id}")
+	public ResponseEntity<DepartmentDto> getDepartmentById(@PathVariable("id") Long departmentId) {
+		DepartmentDto department = departmentServiceImpl.getDepartmentById(departmentId);
+		return ResponseEntity.ok(department);
+	}
 }
