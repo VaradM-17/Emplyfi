@@ -1,5 +1,8 @@
 package com.ems.ems_backend.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.ems.ems_backend.dto.DepartmentDto;
@@ -43,8 +46,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public void deleteDepartment(Long id) {
 		Department department = departmentRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Department not found by Id : " + id));
-		
+
 		departmentRepository.deleteById(id);
 	}
 
+	
 }
