@@ -21,7 +21,7 @@ import com.ems.ems_backend.service.impl.DepartmentServiceImpl;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-@CrossOrigin("/")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/departments")
 @RestController
 public class DepartmentController {

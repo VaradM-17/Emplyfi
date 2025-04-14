@@ -1,24 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HeaderComponent = () => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             Emplyfi
-          </a>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                
-                <a className="nav-link" aria-current="page" href="/employees">
-                  Employee Details
-                </a>
-                
-              </li>
-            </ul>
-          </div>
+          </Link>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row gap-3">
+            <li className="nav-item">
+              <Link className="nav-link" to="/employees">
+                Employees
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/departments">
+                Departments
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>
