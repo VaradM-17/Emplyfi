@@ -1,34 +1,69 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createDepartment } from "../services/DepartmentService";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {createDepartment,getDepartmentById,updateDepartment} from "../services/DepartmentService";
 
 const DepartmentComponent = () => {
   const [departmentName, setDepartmentName] = useState("");
   const [departmentDescription, setDepartmentDescription] = useState("");
 
+  // dynamically change Title if id is present
+  const { id } = useParams();
   const navigator = useNavigate();
 
-  function saveDepartment(e) {
-    e.preventDefault();
-
-    const department = { departmentName, departmentDescription };
-
-    createDepartment(department)
+  // useEffect to fetch department
+  useEffect(() => {
+    getDepartmentById(id)
       .then((response) => {
-        console.log(response.data);
-        navigator("/departments");
+        setDepartmentName(response.data.departmentName);
+        setDepartmentDescription(response.data.departmentDescription);
       })
       .catch((error) => {
         console.error(error);
       });
+  }, []);
+
+  // create
+  function saveOrUpdateDepartment(e) {
+    e.preventDefault();
+
+    const department = { departmentName, departmentDescription };
+
+    if (id) {
+      // update department
+      updateDepartment(id, department)
+        .then((response) => {
+          console.log(response.data);
+          navigator("/departments");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      // create department
+      createDepartment(department)
+        .then((response) => {
+          console.log(response.data);
+          navigator("/departments");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }
+
+  function pageTitle() {
+    if (id) {
+      return <h2 className="text-center mt-3">Update Department</h2>;
+    } else {
+      return <h2 className="text-center mt-3">Add Department</h2>;
+    }
   }
 
   return (
     <div className="container mt-5">
       <div className="row">
         <div className="card col-md-6 offset-md-3 mt-5">
-          <h2 className="text-center mt-4">Add Department</h2>
-
+          {pageTitle()}
           <div className="card-body">
             <form>
               <div className="form-group mb-2">
@@ -56,12 +91,12 @@ const DepartmentComponent = () => {
                 />
               </div>
 
-              <div className="text-center">
+              <div className="text-center mb-4">
                 <button
-                  className="btn btn-success btn-lg mt-3"
-                  onClick={saveDepartment}
+                  className="btn btn-success btn-lg mt-4"
+                  onClick={saveOrUpdateDepartment}
                 >
-                  Submit
+                  {id ? "Update" : "Submit"}
                 </button>
               </div>
             </form>

@@ -21,7 +21,7 @@ function App() {
            {/* departments  */}
           <Route path="/departments" element={<ListDepartmentComponent />} />
           <Route path="/add-department" element={<DepartmentComponent />} />
-          {/* <Route path="/edit-department/:id" element={<DepartmentComponent />}/> */}
+          <Route path="/edit-department/:id" element={<DepartmentComponent />}/>
         </Routes>
       </BrowserRouter>
     </>
