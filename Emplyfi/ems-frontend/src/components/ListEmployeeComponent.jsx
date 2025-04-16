@@ -59,7 +59,9 @@ const ListEmployeeComponent = () => {
               <th scope="col" className="text-center">First Name</th>
               <th scope="col" className="text-center">Last Name</th>
               <th scope="col" className="text-center">Email</th>
+              <th scope="col" className="text-center">Department</th>
               <th scope="col" className="text-center">Actions</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -69,6 +71,7 @@ const ListEmployeeComponent = () => {
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>
+                <td>{employee.departmentName}</td>
                 <td>
                   <button
                     className="btn btn-primary me-2"
