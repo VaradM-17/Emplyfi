@@ -47,8 +47,8 @@ cd emplyfi/backend
 3. Update your database details in `src/main/resources/application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/emplyfi_db
-spring.datasource.username=root
+spring.datasource.url=jdbc:mysql://localhost:3306/yourdatabase
+spring.datasource.username=yourusername
 spring.datasource.password=yourpassword
 spring.jpa.hibernate.ddl-auto=update
 ```
